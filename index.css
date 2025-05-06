@@ -24,6 +24,7 @@
 }
 
 .header-item {
+  cursor: pointer;
   background-color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 1.25rem;
@@ -44,17 +45,52 @@
   transform: translateY(-3px);
 }
 
+.intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  margin-top: 10rem;
+  margin-left: 8rem;
+  margin-right: 8rem;
+  gap: 2rem;
+  padding: 2rem;
+}
+
 .description {
   font-size: 20px;
-  margin-top: 12.5rem;
-  margin-left: 12rem;
-  margin-right: 39rem;
   color: #333;
+}
+
+.social {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.linkedin {
+  color: #0077b5;
+}
+
+.github {
+  color: #333;
+}
+
+.linkedin:hover {
+  color: #005582;
+  transform: translateY(-3px);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.github:hover {
+  color: #000000;
+  transform: translateY(-3px);
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .explore-section {
   text-align: center;
-  margin-top: 10rem;
+  margin-top: 4rem;
 }
 
 .arrow-container {
@@ -76,6 +112,9 @@
 
 .explore-container {
   transition: opacity 0.5s ease;
+}
+
+.title-container {
 }
 
 @keyframes bounce {
@@ -228,6 +267,13 @@
 }
 
 @media (max-width: 1024px) {
+  .intro {
+    grid-template-columns: 1fr;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    gap: 2rem;
+  }
+
   .description {
     margin-left: 4rem;
     margin-right: 4rem;

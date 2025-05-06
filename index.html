@@ -39,17 +39,38 @@
 
     <main>
       <section class="title-container">
-        <p class="description">
-          Hi, my name is William Park and I'm a
-          <b style="font-size: 24px">Software Engineer</b> passionate about
-          <b style="font-size: 24px"> clean </b> and
-          <b style="font-size: 24px"> practical</b>
-          <b style="font-size: 24px"> UI/UX</b>
-        </p>
+        <div class="intro">
+          <p class="description">
+            Hi, my name is William Park and I'm a
+            <b style="font-size: 24px">Software Engineer</b> passionate about
+            <b style="font-size: 24px"> clean </b> and
+            <b style="font-size: 24px"> practical</b>
+            <b style="font-size: 24px"> UI/UX</b>
+          </p>
+          <div class="social">
+            <a
+              class="linkedin"
+              href="https://www.linkedin.com/in/william-park-009428238/"
+              target="_blank"
+              aria-label="LinkedIn"
+            >
+              <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+            <a
+              class="github"
+              href="https://github.com/willimprkBrown"
+              target="_blank"
+              aria-label="GitHub"
+            >
+              <i class="fab fa-github fa-2x"></i>
+            </a>
+          </div>
+        </div>
       </section>
+
       <section class="explore-section">
         <div class="explore-container">
-          <div class="arrow-container" , id="scroll-arrow">
+          <div class="arrow-container" id="scroll-arrow">
             <div class="down-arrow">↓</div>
             <p class="explore-text">explore!</p>
           </div>
@@ -60,7 +81,10 @@
         <div class="card-grid">
           <div class="card">
             <a href="https://wcparkredesignpage.vercel.app/" target="_blank">
-              <img src="images/redesignthumbnail.png" alt="Project 1" />
+              <img
+                src="images/redesignthumbnail.png"
+                alt="Autonodyne website Redesign project"
+              />
               <div class="card-content">
                 <h3>Autonodyne Webpage Redesign</h3>
                 <p>A responsive redesign of the Autonodyne website</p>
@@ -70,7 +94,10 @@
 
           <div class="card">
             <a href="https://wcparkpersona.vercel.app/" target="_blank">
-              <img src="images/personathumbnail.jpeg" alt="Project 1" />
+              <img
+                src="images/personathumbnail.jpeg"
+                alt="Ten One Tea House kiosk Persona project"
+              />
               <div class="card-content">
                 <h3>Ten One Tea House Persona</h3>
                 <p>Personas for the Ten One Tea House kiosk</p>
@@ -80,17 +107,23 @@
 
           <div class="card">
             <a href="https://wcparkdropdown.vercel.app/" target="_blank">
-              <img src="images/dropdownthumbnail.png" alt="Project 1" />
+              <img
+                src="images/dropdownthumbnail.png"
+                alt="Notepad dropdown component redesign"
+              />
               <div class="card-content">
                 <h3>Notepad Dropdown Redesign</h3>
-                <p>An accessible redesign of the Notepad dropdown</p>
+                <p>An accessible redesign of the Notepad dropdown component</p>
               </div>
             </a>
           </div>
 
           <div class="card">
             <a href="https://wcparkiterative.vercel.app/" target="_blank">
-              <img src="images/hfscan.png" alt="Project 4" />
+              <img
+                src="images/hfscan.png"
+                alt="Mecha Health application iterative design and evaluation"
+              />
               <div class="card-content">
                 <h3>Iterative Design</h3>
                 <p>
@@ -216,7 +249,7 @@
     <script>
       document.getElementById("scroll-arrow").addEventListener("click", () => {
         const workSection = document.getElementById("work");
-        const offset = 100; // Adjust this value to control how far up you scroll
+        const offset = 100;
         const y =
           workSection.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top: y, behavior: "smooth" });
@@ -224,22 +257,21 @@
     </script>
 
     <script>
-      document.querySelectorAll("a.scroll-link").forEach((link) => {
-        link.addEventListener("click", function (e) {
-          e.preventDefault(); // Prevent default jump behavior
-          const targetId = this.getAttribute("href").substring(1); // e.g., 'about'
-          const targetElement = document.getElementById(targetId);
-
-          if (targetElement) {
-            const headerOffset = 100; // Offset in pixels
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition =
-              elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth",
-            });
+      document.querySelectorAll(".header-item").forEach((item) => {
+        item.addEventListener("click", (e) => {
+          const link = item.querySelector("a.scroll-link");
+          if (link && link.getAttribute("href").startsWith("#")) {
+            e.preventDefault();
+            const targetId = link.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              const yOffset = -100;
+              const y =
+                targetElement.getBoundingClientRect().top +
+                window.pageYOffset +
+                yOffset;
+              window.scrollTo({ top: y, behavior: "smooth" });
+            }
           }
         });
       });
